@@ -3,7 +3,8 @@ Existen dos formas generales de implementar sesiones en Express: utilizar cookie
 
 No importa el método que utilice, Express proporciona una interfaz coherente para trabajar con los datos de la sesión.
 
-## Sesión basada en cookies
+---
+### Sesión basada en cookies
 
 Utilizando el hecho de que las cookies pueden almacenar datos en el navegador de los usuarios, se puede implementar una API de sesiones mediante cookies. Express viene con un middleware integrado llamado cookieSession, que hace precisamente eso.
 
@@ -33,8 +34,8 @@ app.use(express.cookieSession({
 }));
 ~~~
 
-
-## Sesión basada en Session-store
+---
+### Sesión basada en Session-store
 
 Una Session-store es una provisión para almacenar datos de sesión en el backend. Las sesiones basadas en almacenes de sesiones pueden almacenar una gran cantidad de datos que están bien ocultos al usuario.
 
@@ -62,4 +63,3 @@ app.use(express.session({
   secret: 'SEKR37'
 }));
 ~~~
-

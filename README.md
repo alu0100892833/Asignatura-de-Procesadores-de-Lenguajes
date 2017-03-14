@@ -7,10 +7,10 @@ En esta práctica vamos a añadir al libro que hemos desplegado la semana pasada
 ---
 ## Links de nuestro libro (Falta por añadir)
 
-[GitBook]()
-[gh-pages]()
-[Heroku]()
-[IAAS]()
+* [GitBook](https://alu0100892833.gitbooks.io/estudiar-cookies-y-sessions-en-expressjs/content/)
+* [gh-pages](https://ull-esit-pl-1617.github.io/estudiar-cookies-y-sessions-en-expressjs-guillermo-eduardo-oscar-sergio/)
+* [Heroku]()
+* [IAAS]()
 
 ---
 ## Integrantes del equipo

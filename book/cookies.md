@@ -1,15 +1,15 @@
 # Cookies
-## Descripción
+### Descripción
 Un cookie es una pequeña información enviada por un sitio web y almacenada en el navegador del usuario, de manera que el sitio web puede consultar la actividad previa del usuario. Los cookies tienen una serie de funciones:
 
 * Tener un control acerca de los usuarios. Cada vez que un usuario introduce su nombre de usuario y su contraseña, se almacena un cookie para que el usuario no tenga que estar identificándose en cada página del servidor.
 * Tener información acerca de la información que suele buscar el usuario, por ello existen los problemas de privacidad y es una de las razones por lo que las cookies tiene detractores.
 ---
 
-## Creación de cookies
+### Creación de cookies
 Cuando recibimos un petición HTTP, el servidor puede enviar un *Set-Cookie* en la cabecera de la respuesta. Normalmente, esta cookie es almacenada en el navegador y el valor de la cookie es enviado junto a todas las peticiones hechas al mismo servidor. Además, se puede especificar un retraso de caducidad así como restricciones a un dominio y una ruta específicos, limitando el tiempo y el sitio al que se envía la cookie
 
-### The Set-Cookie and Cookie headers
+#### The Set-Cookie and Cookie headers
 El encabezado de respuesta HTTP Set-Cookie se utiliza para enviar cookies desde el servidor al usuario. Una cookie sencilla se puede configurar de la siguiente manera:
 ~~~
 Set-Cookie: <cookie-name>=<cookie-value>
@@ -32,12 +32,12 @@ Host: www.example.org
 Cookie: cookie_buena=choco; cookie_rara=fresita
 ~~~
 
-### Cookies de  sesión
+#### Cookies de  sesión
 
 La cookie simple creada anteriormente es una cookie de sesión: Se eliminará cuando el cliente se desconecte dek servidor, duran sólo durante la duración de la sesión. No especifican ninguna directiva de caducidad o de antigüedad máxima. Debemos tener en cuenta que los navegadores web a menudo tienen habilitada la restauración de sesiones, lo que hará que la mayoría de las cookies de sesión sean permanentes, como si el navegador nunca estuviera cerrado.
 
 
-### Cookies permanentes
+#### Cookies permanentes
 
 En lugar de expirar cuando el cliente está cerrado, las cookies permanentes caducan en una fecha específica (Expires) o después de un período de tiempo específico (Max-Age).
 ~~~
@@ -45,12 +45,12 @@ Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;
 ~~~
 
 
-### Cookies seguras y HttpOnly
+#### Cookies seguras y HttpOnly
 
 Una cookie segura sólo se enviará al servidor cuando se realice una solicitud utilizando SSL y el protocolo HTTPS. Sin embargo, tenga en cuenta que la información confidencial nunca debe almacenarse o transmitirse en cookies HTTP ya que todo el mecanismo es inseguro y este indicador no ofrecerá ningún cifrado o seguridad adicional.
 
 
-### Alcance de las cookies
+#### Alcance de las cookies
 
 Las directivas de dominio y ruta definen el ámbito de la cookie, es decir, el conjunto de URL a las que se deben enviar las cookies.
 
@@ -66,16 +66,16 @@ Si se establece Path =/ docs, todos estos caminos coincidirán:
 * "/Docs/Web/",
 * "/Docs/Web/HTTP"
 ---
-## Seguridad
+### Seguridad
 
-### Secuestro de sesión y XSS
+#### Secuestro de sesión y XSS
 
 Las cookies se utilizan a menudo en la aplicación web para identificar un usuario y su sesión autenticada. Así que robar una cookie de una aplicación web puede llevar a secuestrar la sesión del usuario autenticado. Las maneras comunes de robar cookies incluyen el uso de la ingeniería social o explotando una vulnerabilidad XSS en la aplicación.
 
 
 El atributo HttpOnly cookie puede ayudar a mitigar este ataque al impedir el acceso al valor de cookie a través de JavaScript.
 
-### Falsificación de peticiones entre sitios (CSRF)
+#### Falsificación de peticiones entre sitios (CSRF)
 
 Hay veces que por ejemplo alguien incluye una imagen que no es realmente una imagen (por ejemplo, en un foro o foro no filtrado), en su lugar es realmente una solicitud al servidor de su banco para retirar dinero:
 ~~~
@@ -89,8 +89,8 @@ Ahora, si ha iniciado sesión en su cuenta bancaria y sus cookies siguen siendo 
 
 NOTA: La información confidencial o confidencial nunca debe ser almacenada o transmitida en cookies HTTP ya que el mecanismo completo es intrínsecamente inseguro.
 
-
-## Seguimiento y privacidad
+---
+### Seguimiento y privacidad
 
 #### Cookies de terceros
 
@@ -112,3 +112,74 @@ En la directiva de la UE, se especifica que antes que guarde o distribuya inform
 Un uso más radical de las cookies son las **zombie cookies** o las **"Evercookies"** (Cookies para siempre). Éstas, son un tipo de cookie que se recre
 a de nuevo, una vez se ha eliminado y además se crean intencionadamente para que sean difíciles de borrar para siempre.
 
+---
+### Cookies en Javascript
+
+Las Cookies son una parte fundamental de las conexiones web a día de hoy, como bien ya hemos explicado, y por tanto están muy bien integradas con las aplicaciones Express que hemos ido viendo hasta ahora en prácticas anteriores. ¿Cómo se utilizan? Pues como en la mayoría de casos, mediante un paquete de NPM que facilita el manejo de objetos que abstraen las cookies al lenguaje Javascript. Nosotros vamos a ver dos módulos, aunque generalmente es el segundo el que más se utiliza.
+
+#### Módulo `cookie`
+
+Si lo que queremos es poder manejar un analizador y serializador de cookies básicas HTTP para servidores HTTP, podemos utilizar el módulo `cookie`. Se utiliza, como cualquier otro módulo, de la siguiente forma:
+
+```Javascript
+var cookie = require('cookie');
+```
+
+Cuando hacemos uso de este módulo, no es necesario hacer uso de Express, tan solo del protocolo HTTP. Sus dos métodos principales son los siguientes:
+
+* `cookie.parse(str, options)` devuelve un objeto _cookie_. Su argumento `str` es la representación en forma de String del valor de cabecera de una cookie, y `options` comprende una serie de parámetros que otorgan opciones adicionales de parseo.
+* `cookie.serialize(name, value, options)` serializa un par nombre - valor en una cadena de cabecera `Set-Cookie`. `name` es el nombre de la cookie, `value` es el valor de la misma y `options` comprende una serie de parámetros que otorgan opciones adicionales de parseo.
+
+
+#### Módulo `cookie-parser`
+
+Este módulo es mucho más utilizado en la práctica para el manejo de cookies, puesto que está diseñado para su implementación en aplicaciones Express. Se trata de un _middleware_ que parsea las cookies y las abstrae en un objeto Javascript.
+
+Para su uso, lo primero que hay que hacer es importar el módulo en la aplicación:
+
+```javascript
+var express = require('express');
+var cookieParser = require('cookie-parser');
+
+var app = express();
+app.use(cookieParser());
+```
+
+`Cookie-parser` parsea la cabecera de una cookie y define el atributo `req.cookies` con un objeto determinado por el nombre de las cookies. Para crear una nueva cookie, podemos definir una nueva ruta en nuestra aplicación Express de la siguiente manera:
+
+```javascript
+app.get('/cookie', function(req, res) {
+     res.cookie(cookie_name, 'cookie_value').send('Cookie is set');
+});
+```
+
+Se puede comprobar fácilmente si la cookie se ha creado o no, escribiendo `document.cookie` en la consola de desarrollador del navegador que estemos utilizando. El navegador se encarga por sí solo de enviar de nuevo estas cookies al servidor, no es algo de lo que tengamos que ocuparnos los desarrolladores. Sin embargo, se puede anclar la cookie específicamente en la cabecera de una petición, escribiendo el siguiente código:
+
+```javascript
+app.get('/', function(req, res) {
+  console.log("Cookies :  ", req.cookies);
+});
+```
+
+Podemos realizar otras muchas operaciones con este tipo de objetos. Podemos, por ejemplo, establecer una fecha de caducidad de la cookie, para que después de ese tiempo, el navegador elimine la cookie y no la envíe al servidor. Para esto utilizamos el método `cookie` con la opción `expire` o `maxAge`, como en el siguiente ejemplo:
+
+```javascript
+res.cookie(name , 'value', {expire : new Date() + 9999});
+res.cookie(name, 'value', {maxAge : 9999});
+```
+
+Por último, vamos a ver cómo eliminar una cookie. Este es un procedimiento muy simple, ya que existe un método llamado `clearCookie` que lleva a cabo precisamente esta función. Recibe como parámetro el nombre de la cookie, y por tanto basta con añadir la sentencia `clearCookie('cookie-monster')` para que la cookie con nombre _cookie-monster_ desaparezca. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
