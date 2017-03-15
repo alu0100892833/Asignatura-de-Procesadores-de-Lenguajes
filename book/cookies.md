@@ -130,6 +130,9 @@ Cuando hacemos uso de este módulo, no es necesario hacer uso de Express, tan so
 * `cookie.parse(str, options)` devuelve un objeto _cookie_. Su argumento `str` es la representación en forma de String del valor de cabecera de una cookie, y `options` comprende una serie de parámetros que otorgan opciones adicionales de parseo.
 * `cookie.serialize(name, value, options)` serializa un par nombre - valor en una cadena de cabecera `Set-Cookie`. `name` es el nombre de la cookie, `value` es el valor de la misma y `options` comprende una serie de parámetros que otorgan opciones adicionales de parseo.
 
+En el directorio `src` tenemos un ejemplo sencillo sobre el funcionamiento de este módulo. El ejemplo solicita al usuario introducir su nombre, el cual va a almacenar en una cookie para que sea enviado al servidor en cada petición. Así, una vez el usuario indique su nombre, la web se recargará automáticamente, mostrando el nombre introducido. Si cerramos el navegador y accedemos de nuevo, veremos cómo la cookie permite al servidor recordar el nombre introducido. Así seguirá siendo durante 1 semana, la fecha que hemos establecido para la caducidad de la cookie.
+
+Para ejecutar este ejmplo, ejecutamos la tarea de gulp `cookie-module-test` y luego accedemos desde el navegador a nuestro puerto local 3000: `localhost:3000`.
 
 #### Módulo `cookie-parser`
 
@@ -168,7 +171,7 @@ res.cookie(name , 'value', {expire : new Date() + 9999});
 res.cookie(name, 'value', {maxAge : 9999});
 ```
 
-Por último, vamos a ver cómo eliminar una cookie. Este es un procedimiento muy simple, ya que existe un método llamado `clearCookie` que lleva a cabo precisamente esta función. Recibe como parámetro el nombre de la cookie, y por tanto basta con añadir la sentencia `clearCookie('cookie-monster')` para que la cookie con nombre _cookie-monster_ desaparezca. 
+Por último, vamos a ver cómo eliminar una cookie. Este es un procedimiento muy simple, ya que existe un método llamado `clearCookie` que lleva a cabo precisamente esta función. Recibe como parámetro el nombre de la cookie, y por tanto basta con añadir la sentencia `clearCookie('cookie-monster')` para que la cookie con nombre _cookie-monster_ desaparezca.
 
 
 

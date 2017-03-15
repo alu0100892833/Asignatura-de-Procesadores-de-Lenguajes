@@ -2,13 +2,19 @@
 
 ## Descripción
 
-En esta práctica vamos a añadir al libro que hemos desplegado la semana pasada una parte nueva acerca de las Cookies y de las Sessions. Para ellos vamos a hacer uso de los links que nos ha proporcionado el profesor [Casiano Rodríguez](https://campusvirtual.ull.es/1617/user/view.php?id=717&course=1148) en la [descripción](https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/practicas/practicalearningcookies.html) de la práctica.
+En esta práctica hemos realizado un pequeño estudio acerca de cómo funcionan las `cookies` y las `sessions` en las aplicaciones web desarrolladas con el lenguaje de programación Javascript. Aunque nos centraremos principalmente en aquellas basadas en las posibilidades que ofrece el módulo Express, también haremos algún acercamiento a otros módulos. 
+
+* Profesor [Casiano Rodríguez](https://campusvirtual.ull.es/1617/user/view.php?id=717&course=1148)
+* [Descripción de la práctica en GitBook](https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/practicas/practicalearningcookies.html)
+
+También se ha incluído toda la información recolectada en prácticas anteriores, también información estrechamente relacionada con el desarrollo de aplicaciones web en NodeJS.
+
 
 ---
-## Links de nuestro libro (Falta por añadir)
+## Despliegues del libro
 
 * [GitBook](https://alu0100892833.gitbooks.io/estudiar-cookies-y-sessions-en-expressjs/content/)
-* [gh-pages](https://ull-esit-pl-1617.github.io/estudiar-cookies-y-sessions-en-expressjs-guillermo-eduardo-oscar-sergio/)
+* [GitHub Pages](https://ull-esit-pl-1617.github.io/estudiar-cookies-y-sessions-en-expressjs-guillermo-eduardo-oscar-sergio/)
 * [Heroku]()
 * [IAAS]()
 
