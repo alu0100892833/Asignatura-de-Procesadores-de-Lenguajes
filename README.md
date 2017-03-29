@@ -2,10 +2,12 @@
 
 ### Descripción
 
-Este libro es una recopilación de todos las herramientas
+Este libro es una recopilación de todos las herramientas y conceptos vistos en la asignatura de Procesadores de Lenguajes, en el curso 2016-2017 de la Escuela Técnica Superior de Ingeniería Informática de la Universidad de La Laguna (Itinerario de Computación).
+
+En esta asignatura se han visto una enorme variedad de conceptos: desde el uso básico de Git, GitBook, MarkDown y otras herramientas, pasando por el aprovechamiento de las utilidades de Javascript, hasta las distintas fases de la compilación de un lenguaje de programación. En los capítulos de la izquierda se puede ver todo el contenido disponible.
 
 * Profesor [Casiano Rodríguez](https://campusvirtual.ull.es/1617/user/view.php?id=717&course=1148)
-* [Descripción de la práctica en GitBook](https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/practicas/practicalearningcookies.html)
+* [Procesadores de Lenguajes en el Campus Virtual](https://campusvirtual.ull.es/1617/course/view.php?id=1148)
 
 ---
 ### Integrantes del equipo
